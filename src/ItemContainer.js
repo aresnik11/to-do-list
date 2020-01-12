@@ -1,19 +1,17 @@
 import React from 'react'
 import ToDoItem from './ToDoItem'
 
-class ItemContainer extends React.Component {
-    makeItems = () => {
-        return this.props.items.map(item => <ToDoItem key={item} item={item} /> )
+const ItemContainer = (props) => {
+    const makeItems = () => {
+        return props.items.map(item => <ToDoItem key={item} item={item} removeItem={props.removeItem} />)
     }
 
-    render() {
-        return (
-            <div>
-                <h1>To Do</h1>
-                {this.makeItems()}
-            </div>
-        )
-    }
+    return (
+        <div>
+            <h1>To Do</h1>
+            {makeItems()}
+        </div>
+    )
 }
 
 export default ItemContainer

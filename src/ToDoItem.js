@@ -1,11 +1,17 @@
 import React from 'react'
 
-class ToDoItem extends React.Component {
-    render() {
-        return (
-            <h3>{this.props.item}</h3>
-        )
-    }
+const ToDoItem = (props) => {
+    return (
+        <div>
+            <h3>
+                {props.item}
+                &nbsp;&nbsp;&nbsp;
+                <span role="img" aria-label="checkmark" onClick={() => props.removeItem(props.item)}>✅</span>
+                &nbsp;&nbsp;
+                <span role="img" aria-label="x-button" onClick={() => props.removeItem(props.item)}>❌</span>
+            </h3>
+        </div>
+    )
 }
 
 export default ToDoItem

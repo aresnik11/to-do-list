@@ -14,12 +14,20 @@ class App extends React.Component {
     })
   }
 
+  removeItem = (item) => {
+    let copyItems = [...this.state.items]
+    let newItems = copyItems.filter(stateItem => stateItem !== item)
+    this.setState({
+      items: newItems
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <h1>To Do List App</h1>
         <NewItem addNewItem={this.addNewItem} />
-        <ItemContainer items={this.state.items} />
+        <ItemContainer items={this.state.items} removeItem={this.removeItem} />
       </div>
     );
   }
