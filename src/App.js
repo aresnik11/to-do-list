@@ -2,18 +2,26 @@ import React from 'react';
 import './App.css';
 import NewItem from './NewItem';
 import ItemContainer from './ItemContainer';
+import CompleteContainer from './CompleteContainer';
 
 class App extends React.Component {
   state = {
-    items: []
+    items: [],
+    completeItems: []
   }
 
   componentDidMount() {
     // grabbing items from localStorage
     const items = localStorage.getItem("items")
+    const completeItems = localStorage.getItem("completeItems")
     if (items) {
       this.setState({
         items: items.split(",")
+      })
+    }
+    if (completeItems) {
+      this.setState({
+        completeItems: completeItems.split(",")
       })
     }
   }
@@ -30,7 +38,19 @@ class App extends React.Component {
     let newItems = copyItems.filter(stateItem => stateItem !== item)
     this.setState({
       items: newItems
-    }, () => localStorage.setItem("items", this.state.items))    
+    }, () => localStorage.setItem("items", this.state.items))
+  }
+
+  completeItem = (item) => {
+    let copyItems = [...this.state.items]
+    let newItems = copyItems.filter(stateItem => stateItem !== item)
+    this.setState({
+      items: newItems,
+      completeItems: [...this.state.completeItems, item]
+    }, () => {
+      localStorage.setItem("items", this.state.items)
+      localStorage.setItem("completeItems", this.state.completeItems)
+    })
   }
 
   render() {
@@ -38,7 +58,10 @@ class App extends React.Component {
       <div className="App">
         <h1>To Do List App</h1>
         <NewItem addNewItem={this.addNewItem} />
-        <ItemContainer items={this.state.items} removeItem={this.removeItem} />
+        <div className="main-grid">
+          <ItemContainer items={this.state.items} removeItem={this.removeItem} completeItem={this.completeItem} />
+          <CompleteContainer completeItems={this.state.completeItems} />
+        </div>
       </div>
     );
   }
