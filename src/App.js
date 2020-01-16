@@ -8,10 +8,21 @@ class App extends React.Component {
     items: []
   }
 
+  componentDidMount() {
+    // grabbing items from localStorage
+    const items = localStorage.getItem("items")
+    if (items) {
+      this.setState({
+        items: items.split(",")
+      })
+    }
+  }
+
   addNewItem = (item) => {
+    // adding new item to items array in state
     this.setState({
       items: [...this.state.items, item]
-    })
+    }, () => localStorage.setItem("items", this.state.items))
   }
 
   removeItem = (item) => {
@@ -19,7 +30,7 @@ class App extends React.Component {
     let newItems = copyItems.filter(stateItem => stateItem !== item)
     this.setState({
       items: newItems
-    })
+    }, () => localStorage.setItem("items", this.state.items))    
   }
 
   render() {
