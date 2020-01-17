@@ -27,6 +27,8 @@ class App extends React.Component {
   }
 
   addNewItem = (item) => {
+    let now = new Date()
+    item = item + " - " + now.toDateString()
     // adding new item to items array in state
     this.setState({
       items: [...this.state.items, item]
