@@ -7,13 +7,12 @@ const ToDoItem = (props) => {
     return (
         <div>
             <h3>
-                {name}
+                {date} - {name}
                 &nbsp;&nbsp;&nbsp;
                 <span role="img" aria-label="checkmark" onClick={() => props.completeItem(props.item)}>✅</span>
                 &nbsp;&nbsp;
                 <span role="img" aria-label="x-button" onClick={() => props.removeItem(props.item)}>❌</span>
             </h3>
-            <h4>{date}</h4>
         </div>
     )
 }
