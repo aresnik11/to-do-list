@@ -2,7 +2,7 @@
 
 A to do list app for users to keep track of items on their to do list and see completed items.
 
-<!-- ![Booked Books](https://user-images.githubusercontent.com/8761638/69598794-94adeb80-0fd8-11ea-834f-5dd299b52a67.png) -->
+![To Do List](https://user-images.githubusercontent.com/8761638/72669990-213bbf80-3a06-11ea-80fd-ad880a82fb0d.png)
 
 ## Technology Used
 
