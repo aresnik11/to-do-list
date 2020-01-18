@@ -59,6 +59,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>To Do List</h1>
+        <br/>
         <NewItem addNewItem={this.addNewItem} />
         <div className="main-grid">
           <ItemContainer items={this.state.items} removeItem={this.removeItem} completeItem={this.completeItem} />
