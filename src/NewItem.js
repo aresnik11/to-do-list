@@ -13,10 +13,15 @@ class NewItem extends React.Component {
 
     onSubmit = (e) => {
         e.preventDefault()
-        this.props.addNewItem(this.state.value)
-        this.setState({
-            value: ""
-        })
+        if (this.state.value !== "") {
+            this.props.addNewItem(this.state.value)
+            this.setState({
+                value: ""
+            })
+        }
+        else {
+            alert("Please enter an item")
+        }
     }
 
     render() {
