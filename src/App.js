@@ -28,7 +28,7 @@ class App extends React.Component {
 
   addNewItem = (item) => {
     let now = new Date()
-    item = item + " - " + now.toDateString()
+    item = now.toDateString() +  " - " + item
     // adding new item to items array in state
     this.setState({
       items: [...this.state.items, item]
@@ -58,7 +58,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h1>To Do List App</h1>
+        <h1>To Do List</h1>
         <NewItem addNewItem={this.addNewItem} />
         <div className="main-grid">
           <ItemContainer items={this.state.items} removeItem={this.removeItem} completeItem={this.completeItem} />

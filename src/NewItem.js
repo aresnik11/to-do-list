@@ -22,8 +22,8 @@ class NewItem extends React.Component {
     render() {
         return (
             <form onSubmit={this.onSubmit}>
-                <input type="text" name="value" placeholder="To Do" value={this.state.value} onChange={this.onInputChange} />
-                <input type="submit" value="Add" />
+                <input type="text" className="input" name="value" placeholder="To Do" value={this.state.value} onChange={this.onInputChange} />
+                <input type="submit" className="btn" value="Add" />
             </form>
         )
     }
